@@ -21,7 +21,8 @@ namespace Fractions
             Fraction d = new Fraction(4, 7);
             Console.WriteLine($"Индекс 0: {d[0]}");
             Console.WriteLine($"Индекс 1: {d[1]}");
-            a.Change += FractionChange;
+            a.Change += ChangeNum;
+            a.Change += ChangeDenum;
             a.Numinator_2 = 2;
             a.Denominator_2 = 5;
             switch (sign)
@@ -72,9 +73,14 @@ namespace Fractions
             }
             Console.ReadKey();
         }
-        public static void FractionChange(Fraction fraction, int num)
+        public static void ChangeNum(Fraction fraction, int num)
         {
-            Console.WriteLine("Событие произошло");
+            Console.WriteLine("Числитель изменился");
+        }
+        
+        public static void ChangeDenum(Fraction fraction, int num)
+        {
+            Console.WriteLine("Знаменатель изменился");
         }
     }
 }
