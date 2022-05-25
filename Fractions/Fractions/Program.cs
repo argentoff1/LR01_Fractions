@@ -10,8 +10,8 @@ namespace Fractions
     {
         static void Main(string[] args)
         {
-            Fraction a = new Fraction(4, -8);//создание объекта класса Drob
-            Fraction b = new Fraction(2, 5);//создание объекта класса Drob
+            Fraction a = new Fraction(4, -8);
+            Fraction b = new Fraction(2, 5);
             Fraction z = new Fraction(81, 17, 21);
             Fraction c;
             Console.WriteLine("Представление в виде обыкновенной дроби:" + a.ToString() + " " + b.ToString());
@@ -19,10 +19,8 @@ namespace Fractions
             string sign = Console.ReadLine();
             string reznak = "+";
             Fraction d = new Fraction(4, 7);
-            Console.WriteLine("Вывод индексов....");
             Console.WriteLine($"Индекс 0: {d[0]}");
             Console.WriteLine($"Индекс 1: {d[1]}");
-            Console.WriteLine("Ивенты работают!");
             a.Change += FractionChange;
             a.Numinator_2 = 2;
             a.Denominator_2 = 5;
@@ -69,14 +67,14 @@ namespace Fractions
                     Console.WriteLine("Десятичная дробь: " + c.ToDouble());
                     break;
                 default:
-                    Console.WriteLine("Неизвестная операция(");
+                    Console.WriteLine("Неизвестная операция");
                     break;
             }
             Console.ReadKey();
         }
         public static void FractionChange(Fraction fraction, int num)
         {
-            Console.WriteLine("Урааааа");
+            Console.WriteLine("Событие произошло");
         }
     }
 }

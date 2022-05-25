@@ -10,17 +10,17 @@ namespace Fractions
     {
         private int numerator = 0;
         private int denominator = 0;
+        public Fraction(int c)
+        {
+            this.numerator = c;
+            this.denominator = 1;
+        }
 
         public Fraction(int c, int z)
         {
             this.numerator = c;
             this.denominator = z;
 
-        }
-        public Fraction(int c)
-        {
-            this.numerator = c;
-            this.denominator = 1;
         }
         public Fraction(int celoe, int c, int z)
         {
@@ -40,7 +40,6 @@ namespace Fractions
 
             set
             {
-                // 4th task - call the event
                 if (Change != null)
                 {
                     Change(this, value);
@@ -57,7 +56,6 @@ namespace Fractions
 
             set
             {
-                // 4th task - call the event
                 if (Change != null)
                     Change(this, value);
 
@@ -69,57 +67,57 @@ namespace Fractions
             return (double)(numerator) / denominator;
         }
 
-        public override string ToString()//cтроковое представление
+        public override string ToString()
         {
             return "(" + numerator.ToString() + "/" + denominator.ToString() + ")";
         }
 
-        public static Fraction operator +(Fraction a, Fraction b)//сложение дробей
+        public static Fraction operator +(Fraction a, Fraction b)
         {
-            Fraction l = new Fraction(1, 1);//создание и инициализация новой дроби
-            l.numerator = (a.numerator * b.denominator + a.denominator * b.numerator);//числитель новой дроби
-            l.denominator = a.denominator * b.denominator;//знаменатель новой дроби
+            Fraction l = new Fraction(1, 1);
+            l.numerator = (a.numerator * b.denominator + a.denominator * b.numerator);
+            l.denominator = a.denominator * b.denominator;
             Fraction.Reduction(l);//сокращаем дробь
-            return l;//возвращаем результат
+            return l;
 
         }
-        public static Fraction operator -(Fraction a, Fraction b)//вычитание дробей
+        public static Fraction operator -(Fraction a, Fraction b)
         {
-            Fraction l = new Fraction(1, 1);//создание и инициализация новой дроби
-            l.numerator = (a.numerator * b.denominator - a.denominator * b.numerator);//числитель новой дроби
-            l.denominator = a.denominator * b.denominator;//знаменатель новой дроби
-            Fraction.Reduction(l);//сокращаем дробь
+            Fraction l = new Fraction(1, 1);
+            l.numerator = (a.numerator * b.denominator - a.denominator * b.numerator);
+            l.denominator = a.denominator * b.denominator;
+            Fraction.Reduction(l);
             return
-            l;//возвращаем результат
+            l;
 
         }
-        public static Fraction operator *(Fraction a, Fraction b)//вычитание дробей
+        public static Fraction operator *(Fraction a, Fraction b)
         {
-            Fraction l = new Fraction(1, 1);//создание и инициализация новой дроби
-            l.numerator = (a.numerator * b.numerator);//числитель новой дроби
-            l.denominator = a.denominator * b.denominator;//знаменатель новой дроби
-            Fraction.Reduction(l);//сокращаем дробь
-            return l;//возвращаем результат
+            Fraction l = new Fraction(1, 1);
+            l.numerator = (a.numerator * b.numerator);
+            l.denominator = a.denominator * b.denominator;
+            Fraction.Reduction(l);
+            return l;
 
         }
-        public static Fraction operator /(Fraction a, Fraction b)//вычитание дробей
+        public static Fraction operator /(Fraction a, Fraction b)
         {
-            Fraction l = new Fraction(1, 1);//создание и инициализация новой дроби
-            l.numerator = (a.numerator / b.numerator);//числитель новой дроби
-            l.denominator = a.denominator / b.denominator;//знаменатель новой дроби
-            Fraction.Reduction(l);//сокращаем дробь
-            return l;//возвращаем результат
+            Fraction l = new Fraction(1, 1);
+            l.numerator = (a.numerator / b.numerator);
+            l.denominator = a.denominator / b.denominator;
+            Fraction.Reduction(l);
+            return l;
         }
         //процедура по сокращению дроби
         public static Fraction Reduction(Fraction a)
         {
             double max = 0;
-            //выбираем что больше числитель или знаменатель
+            
             if (a.numerator > a.denominator)
                 max = Math.Abs(a.denominator);// берем по модулю, что работало и с отрицательными
             else
-                max = Math.Abs(a.denominator);//берем по модулю, что работало и с отрицательными
-                                              //поиск от максимума до 2
+                max = Math.Abs(a.denominator);
+                                              
             for (double i = max; i >= 2; i--)
             {
                 //такого числа, поделив на которое бы делилось без
@@ -138,7 +136,7 @@ namespace Fractions
                 a.numerator = -1 * (a.numerator);
                 a.denominator = Math.Abs(a.denominator);
             }
-            return (a);//возращаем результат
+            return (a);
         }
         public int this[int index]
         {
